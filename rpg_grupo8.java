@@ -8,8 +8,16 @@ import java.util.Collections;
 import java.util.List;
 
 public class rpg_grupo8 {
+    
+    public static void Texto(String texto, TimeUnit unit, long tempo_texto) throws InterruptedException {
+        for (char caractere : texto.toCharArray()) {
+            System.out.print(caractere);
+            unit.sleep(tempo_texto);
+        }
 
-    static int temp_dialog = 20, temp_narrativa = 60, temp_instrucoes = 15; 
+    }
+
+    static int temp_dialog = 20, temp_instrucoes = 15; 
 
     public static String principal() throws InterruptedException {
         Scanner input = new Scanner(System.in);
@@ -17,7 +25,7 @@ public class rpg_grupo8 {
         System.out.println(".::::::::::::::::: MATHEMATICAL MINDS :::::::::::::::::.\n");
         System.out.println("Bem-vindo Guardião, como você gostaria de ser chamado?\n");
         name = input.nextLine();
-        Texto("\nCerto, Guardião " + name + ".\n\n\n", TimeUnit.MILLISECONDS, temp_narrativa);
+        Texto("\nCerto, Guardião " + name + ".\n\n\n", TimeUnit.MILLISECONDS, temp_instrucoes); 
         return name;
     }
 
@@ -25,7 +33,7 @@ public class rpg_grupo8 {
         Scanner input = new Scanner(System.in);
         int opcao;
         do {
-            System.out.println(".:::::::::::::::::::::::::: MENU ::::::::::::::::::::::::::::::.\n");
+            System.out.println(".:::::::::::::::::::::::::: MENU ::::::::::::::::::::::::::::::.\n"); 
             System.out.printf("""
                               __________________________________________________
                                            .------------.
@@ -44,7 +52,7 @@ public class rpg_grupo8 {
                                          `.___,'   `.__,'   `.__,'  
                               __________________________________________________
                               """);
-            System.out.println("                  Mathematical minds");
+            System.out.println("              Mathematical minds");
 
             System.out.println("\n[1] - Jogar.  [2] - Créditos.  [3] - Instruções.  [4] - Sair.\n");
             System.out.println(".::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::.");
@@ -57,20 +65,20 @@ public class rpg_grupo8 {
         return opcao;
     }
 
-    public static void menu(int opcao, String name) throws InterruptedException {
+    public static void menu(int opcao, String name) throws InterruptedException { 
         do {
             switch (opcao) {
                 case 1:
                     historia(name);
                     break;
                 case 2:
-                    creditos("");
+                    creditos(name);
                     break;
                 case 3:
-                    intrucoes("");
+                    intrucoes(name);
                     break;    
                 case 4:
-                    sair("");
+                    sair(name); 
                     break;
                 default:
                     System.out.println("Opção inválida."); 
@@ -83,7 +91,7 @@ public class rpg_grupo8 {
         Scanner input = new Scanner(System.in);
         int cap;
     
-      Texto("\nHISTORIA\n\n", TimeUnit.MILLISECONDS, temp_dialog);
+      Texto("\nHISTÓRIA:\n\n", TimeUnit.MILLISECONDS, temp_dialog);
       Texto("NARRADOR : Em uma ilha chamada Algebraria, a matemática reina suprema sob o sábio Rei Totalis.\n", TimeUnit.MILLISECONDS, temp_dialog);
       Texto("No entanto, um dragão maligno conhecido como \"Error\" ameaça a cidade, buscando desequilibrar as equações.\n", TimeUnit.MILLISECONDS, temp_dialog);
       Texto("Para proteger Algebraria, foi preciso chamar os Guardiões matemáticos, representando operações matemáticas fundamentais.\n", TimeUnit.MILLISECONDS, temp_dialog);
@@ -93,7 +101,7 @@ Texto("Com a ameaça crescente de Error, os Guardiões e o Rei Totalis se unem p
 Texto("desencadeando uma grande aventura onde a batalha entre a ordem e o caos é travada nos campos da matemática e do coração humano.\n", TimeUnit.MILLISECONDS, temp_dialog);
         do {
             System.out.println("\nSelecione o capítulo que você gostaria de jogar :");
-            System.out.println("\n[1] Capítulo 1 - O COMEÇO. \n[2] Capítulo 2\n[3] Capítulo 3 "); 
+            System.out.println("\n[1] Capítulo 1 - O ataque ao reino. \n[2] Capítulo 2 - Em desenvolvimento.\n[3] Capítulo 3 - Em desenvolvimento."); 
             cap = input.nextInt();
         } while (cap < 1 || cap > 3);
 
@@ -114,19 +122,22 @@ Texto("desencadeando uma grande aventura onde a batalha entre a ordem e o caos �
         dialog = input.nextInt();
 
         switch (dialog) {
-            case 1 ->{
-                Texto(name +" : Sim. Estou empenhado a derrotar este vilão!\n", TimeUnit.MILLISECONDS, temp_dialog);
-                Texto("Addictus : Que ótimo! Vamos, precisamos nos apressar.\n", TimeUnit.MILLISECONDS, temp_dialog);
-                  }
-            case 2 ->{
-                Texto (name +" : Na verdade não, estou meio triste com essa situação.\n", TimeUnit.MILLISECONDS, temp_dialog);
-                Texto(Addictus : Se alegre meu guerreiro, temos que combater esse ERROR, que está a nós ameaçar.\n", TimeUnit.MILLISECONDS, temp_dialog);
-                   }
-            default ->{
-                Texto (name +" : {...}\n", TimeUnit.MILLISECONDS, temp_dialog);
-                Texto("Addictus : Opá amigo, vejo que você não está em um dia muito bom. mas iremos continuar avançando na nossa missão!\n", TimeUnit.MILLISECONDS, temp_dialog);
-                 }
-        }
+    case 1: {
+        Texto(name + " : Sim. Estou empenhado a derrotar este vilão!\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("Addictus : Que ótimo! Vamos, precisamos nos apressar.\n", TimeUnit.MILLISECONDS, temp_dialog);
+        break;
+    }
+    case 2: {
+        Texto(name + " : Na verdade não, estou meio triste com essa situação.\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("Addictus : Se alegre, meu guerreiro, temos que combater esse ERROR que está a nos ameaçar.\n", TimeUnit.MILLISECONDS, temp_dialog);
+        break;
+    }
+    default: {
+        Texto(name + " : {...}\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("Addictus : Opá amigo, vejo que você não está em um dia muito bom. Mas iremos continuar avançando na nossa missão!\n", TimeUnit.MILLISECONDS, temp_dialog);
+        break;
+    }
+}
         Texto("Me chamo Addictus, sou um dos guardiões que cuida do reino. Hoje é um dia muito importante.\n", TimeUnit.MILLISECONDS, temp_dialog);
         Texto("Todos os guardiões foram convocados para vir até o palácio falar com o rei! Vamos nos sentar todos\n", TimeUnit.MILLISECONDS, temp_dialog);
         Texto("com o Rei Totalis para discutir sobre essa ameaça!\n", TimeUnit.MILLISECONDS, temp_dialog);
@@ -138,19 +149,23 @@ Texto("desencadeando uma grande aventura onde a batalha entre a ordem e o caos �
     dialog_2 = input.nextInt();
 
     switch (dialog_2) {
-        case 1 -> {
-            Texto(name +" : Sim, eu já os conheço. Os Guardiões são guerreiros fantásticos!\n\n", TimeUnit.MILLISECONDS, temp_dialog);
-            Texto("Addictus : A que ótimo! Aliás, quem não os conhece rsrs.", TimeUnit.MILLISECONDS, temp_dialog);
-                 }
-        case 2 -> {
-            Texto(name +" : Tenho apenas um conhecimento superficial sobre vocês.\n", TimeUnit.MILLISECONDS, temp_dialog);
-            Texto("Addictus : Os guardiões são formados por 4 Guerreiros, irei Falar de cada um! \n", TimeUnit.MILLISECONDS, temp_dialog);
-            Texto("Dividus, o guardião da divisão. \nMultiplucus, o guardião da multiplicação.\n", TimeUnit.MILLISECONDS, temp_dialog);
-            Texto("Subtractus, o guardião da subtração. \nAddicus, Vulgo eu. Sou o guardião da adição;\n", TimeUnit.MILLISECONDS, temp_dialog);
-            Texto("...\n", TimeUnit.MILLISECONDS, temp_dialog);
-                }
-        default -> Texto("Caro jogador, digite uma opção válido!\n", TimeUnit.MILLISECONDS, temp_dialog);
+    case 1: {
+        Texto(name + " : Sim, eu já os conheço. Os Guardiões são guerreiros fantásticos!\n\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("Addictus : Ah, que ótimo! Aliás, quem não os conhece rsrs.\n", TimeUnit.MILLISECONDS, temp_dialog);
+        break;
     }
+    case 2: {
+        Texto(name + " : Tenho apenas um conhecimento superficial sobre vocês.\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("Addictus : Os guardiões são formados por 4 Guerreiros, irei falar de cada um!\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("Dividus, o guardião da divisão.\nMultiplucus, o guardião da multiplicação.\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("Subtractus, o guardião da subtração.\nAddicus, vulgo eu. Sou o guardião da adição.\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("...\n", TimeUnit.MILLISECONDS, temp_dialog);
+        break;
+    }
+    default:
+        Texto("Caro jogador, digite uma opção válida!\n", TimeUnit.MILLISECONDS, temp_dialog);
+        break;
+}
 } while (dialog_2 != 1 && dialog_2 != 2);
 
         Texto("\nVamos, vamos entrar no palácio, o Rei Totalis está chamando!\n\n", TimeUnit.MILLISECONDS, temp_dialog);
@@ -167,18 +182,21 @@ Texto("desencadeando uma grande aventura onde a batalha entre a ordem e o caos �
         do {
             dialog_3 = input.nextInt();
             switch (dialog_3) {
-                case 1 ->
-                    Texto("\nBom Dia, Majestade!\n", TimeUnit.MILLISECONDS, temp_dialog);
-                case 2 ->{
-                    Texto(name + " : Olá, Majestade.\n", TimeUnit.MILLISECONDS, temp_dialog);
-                    Texto("Addictus : Desculpe magestade, ele é novo aqui!\n", TimeUnit.MILLISECONDS, temp_dialog);
-                    Texto( "{...}\n", TimeUnit.MILLISECONDS, temp_dialog);
-                    Texto("Addictus :" + name + ", você deveria responder \"Bom Dia, Majestade.\"\n", TimeUnit.MILLISECONDS, temp_dialog);
-                    Texto(name + " : Bom dia, Majestade!.\n", TimeUnit.MILLISECONDS, temp_dialog);
-                }
-                default ->
-                    Texto("\nCaro jogador, digite uma opção válido!\n", TimeUnit.MILLISECONDS, temp_dialog);
-            }
+    case 1:
+        Texto("\nBom Dia, Majestade!\n", TimeUnit.MILLISECONDS, temp_dialog);
+        break;
+    case 2: {
+        Texto(name + " : Olá, Majestade.\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("Addictus : Desculpe, majestade, ele é novo aqui!\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("{...}\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("Addictus : " + name + ", você deveria responder \"Bom Dia, Majestade.\"\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto(name + " : Bom dia, Majestade!.\n", TimeUnit.MILLISECONDS, temp_dialog);
+        break;
+    }
+    default:
+        Texto("\nCaro jogador, digite uma opção válida!\n", TimeUnit.MILLISECONDS, temp_dialog);
+        break;
+}
         } while (dialog_3 != 1 && dialog_3 != 2);
         Texto("\nRei Totális : Guardiões Elementais, obrigado por virem tão prontamente.\nComo vocês sabem, nossa ", TimeUnit.MILLISECONDS, temp_dialog);
         Texto("amada Algébrica está enfrentando uma ameaça sem precedentes.\nError, o vilão anti matemática ", TimeUnit.MILLISECONDS, temp_dialog);
@@ -196,18 +214,23 @@ Texto("desencadeando uma grande aventura onde a batalha entre a ordem e o caos �
     dialog_4 = input.nextInt();
     
     switch (dialog_4) {
-        case 1 -> {
-            Texto(name +" : Estou disposto a ajudar no que for preciso majestade! Pode contar comigo.\n\n", TimeUnit.MILLISECONDS, temp_dialog);
-            Texto("Rei Totális: Ótimo escutar isso " + name + "! Muito Obrigado em ajudar na defesa do nosso reino.\n", TimeUnit.MILLISECONDS, temp_dialog);
-                }
-        case 2 -> {
-            Texto(name + " : Não estou muito confiante. Será uma boa ideia enfrentar ele?\n", TimeUnit.MILLISECONDS, temp_dialog);
-            Texto("\nRei Totális : Mas é claro guerreiro! Estamos com os mais fortes e corajosos guerreiros!\n", TimeUnit.MILLISECONDS, temp_dialog);
-            Texto("Você está com a responsabilidade de guiá-los com sua inteligência.", TimeUnit.MILLISECONDS, temp_dialog);
-            Texto("Se acalme, tudo vai dar certo, e vamos sair vitoriosos!\n", TimeUnit.MILLISECONDS, temp_dialog);
-                }
-        default -> Texto("Caro jogador, digite uma opção válida!\n", TimeUnit.MILLISECONDS, temp_dialog);
+    case 1: {
+        Texto(name + " : Estou disposto a ajudar no que for preciso majestade! Pode contar comigo.\n\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("Rei Totális: Ótimo escutar isso " + name + "! Muito Obrigado em ajudar na defesa do nosso reino.\n", TimeUnit.MILLISECONDS, temp_dialog);
+        break;
     }
+    case 2: {
+        Texto(name + " : Não estou muito confiante. Será uma boa ideia enfrentar ele?\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("\nRei Totális : Mas é claro guerreiro! Estamos com os mais fortes e corajosos guerreiros!\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("Você está com a responsabilidade de guiá-los com sua inteligência.", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("Se acalme, tudo vai dar certo, e vamos sair vitoriosos!\n", TimeUnit.MILLISECONDS, temp_dialog);
+        break;
+    }
+    default: {
+        Texto("Caro jogador, digite uma opção válida!\n", TimeUnit.MILLISECONDS, temp_dialog);
+        break;
+    }
+}
 } while (dialog_4 != 1 && dialog_4 != 2);
         Texto("Rei Totális : Estou confiante em suas determinações, meus valentes Guardiões Elementais. Enviei mensageiros ", TimeUnit.MILLISECONDS, temp_dialog);
         Texto("para buscar ajuda dos reinos vizinhos, mas precisamos agir rapidamente para proteger nosso povo.\n", TimeUnit.MILLISECONDS, temp_dialog);
@@ -222,9 +245,13 @@ Texto("desencadeando uma grande aventura onde a batalha entre a ordem e o caos �
     dialog_5 = input.nextInt();
     
     switch (dialog_5) {
-        case 1 -> Texto(name + " : Ok, Vamos nessa!\n\n", TimeUnit.MILLISECONDS, temp_dialog);
-        default -> Texto("Caro jogador, digite uma opção válida!\n", TimeUnit.MILLISECONDS, temp_dialog);
-    }
+    case 1:
+        Texto(name + " : Ok, Vamos nessa!\n\n", TimeUnit.MILLISECONDS, temp_dialog);
+        break;
+    default:
+        Texto("Caro jogador, digite uma opção válida!\n", TimeUnit.MILLISECONDS, temp_dialog);
+        break;
+}
 } while (dialog_5 != 1);
         Texto(" (Saindo do palácio…) \n\n", TimeUnit.MILLISECONDS, temp_dialog);
         Texto("Residente : GUARDIÕES, GUARDIÕES!! SOCORRO!\n", TimeUnit.MILLISECONDS, temp_dialog);
@@ -239,20 +266,25 @@ Texto("desencadeando uma grande aventura onde a batalha entre a ordem e o caos �
     dialog_6 = input.nextInt();
 
     switch (dialog_6) {
-        case 1 -> {
-            Texto(name + " : Muito obrigado pelas informações!\n", TimeUnit.MILLISECONDS, temp_dialog);
-            Texto("Divíduos : Em que direção o monstro foi?\n", TimeUnit.MILLISECONDS, temp_dialog);
-            Texto("Residente : Sentido a praça central.\n", TimeUnit.MILLISECONDS, temp_dialog);
-            Texto("Divíduos : Certo, iremos atrás dele.\n", TimeUnit.MILLISECONDS, temp_dialog);
-            Texto("Residente : Por favor, Resolvam isso.\n", TimeUnit.MILLISECONDS, temp_dialog);
-                }
-        case 2 -> {
-            Texto(name + " : Você teria mais alguma informação?.\n", TimeUnit.MILLISECONDS, temp_dialog);
-            Texto("Residente : Ele foi sentido a praça central.\n", TimeUnit.MILLISECONDS, temp_dialog);
-            Texto(name + " : Certo, Obrigado. iremos fazer o máximo para derrotar esse monstro.\n", TimeUnit.MILLISECONDS, temp_dialog);
-                }
-        default -> Texto("Caro jogador, digite uma opção válida!\n", TimeUnit.MILLISECONDS, temp_dialog);
+    case 1: {
+        Texto(name + " : Muito obrigado pelas informações!\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("Divíduos : Em que direção o monstro foi?\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("Residente : Sentido a praça central.\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("Divíduos : Certo, iremos atrás dele.\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("Residente : Por favor, resolvam isso.\n", TimeUnit.MILLISECONDS, temp_dialog);
+        break;
     }
+    case 2: {
+        Texto(name + " : Você teria mais alguma informação?.\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("Residente : Ele foi sentido a praça central.\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto(name + " : Certo, obrigado. Iremos fazer o máximo para derrotar esse monstro.\n", TimeUnit.MILLISECONDS, temp_dialog);
+        break;
+    }
+    default: {
+        Texto("Caro jogador, digite uma opção válida!\n", TimeUnit.MILLISECONDS, temp_dialog);
+        break;
+    }
+}
 } while (dialog_6 != 1 && dialog_6 !=2);
         
         Texto("\nDivíduos : Ei, esse só pode ser o Discrepância!Capanga miserável do ERROR.\n\n", TimeUnit.MILLISECONDS, temp_dialog);
@@ -270,10 +302,16 @@ Texto("desencadeando uma grande aventura onde a batalha entre a ordem e o caos �
     dialog_7 = input.nextInt();
 
     switch (dialog_7) {
-        case 1 -> Texto(name + " : Pessoal, FOCO! Precisamos detê-lo. \nse ficarmos falando aqui sobre as habilidades dele e não formos atrás. Ele vai destruir cada vez mais coisas!\n\n", TimeUnit.MILLISECONDS, temp_dialog);
-        case 2 -> Texto("...", TimeUnit.MILLISECONDS, temp_dialog);
-        default -> Texto("Caro jogador, digite uma opção válido!\n", TimeUnit.MILLISECONDS, temp_dialog);
-    }
+    case 1:
+        Texto(name + " : Pessoal, FOCO! Precisamos detê-lo. \nse ficarmos falando aqui sobre as habilidades dele e não formos atrás. Ele vai destruir cada vez mais coisas!\n\n", TimeUnit.MILLISECONDS, temp_dialog);
+        break;
+    case 2:
+        Texto("...", TimeUnit.MILLISECONDS, temp_dialog);
+        break;
+    default:
+        Texto("Caro jogador, digite uma opção válido!\n", TimeUnit.MILLISECONDS, temp_dialog);
+        break;
+}
 
     Texto("Addictus : Discrepância é capaz de criar ambientes onde as regras matemáticas\nnormais não se aplicam, causando confusão e desorientação em seus oponentes.\n", TimeUnit.MILLISECONDS, temp_dialog);
     Texto("Isso pode incluir terrenos que mudam constantemente, portais matemáticos para dimensões\ndistorcidas ou até mesmo quebra-cabeças matemáticos impossíveis de resolver.\n", TimeUnit.MILLISECONDS, temp_dialog);
@@ -296,7 +334,7 @@ Texto("desencadeando uma grande aventura onde a batalha entre a ordem e o caos �
             break;
         case 2:
             Texto(name + " : Será que ir juntos é a melhor opção? Acho que deveriamos nos separar.\n", TimeUnit.MILLISECONDS, temp_dialog);
-            Texto("\nAddictus : Você está doido? Se formos sozinhos, ele vai acabar com a gente um por um.\n", TimeUnit.MILLISECONDS, temp_dialog);
+            Texto("\nAddictus : Você está doido? Se formos sozinhos, ele vai acabar com a gente um por um.\n", TimeUnit.MILLISECONDS, temp_dialog); 
             Texto("\nMultiplus : Sim! Juntos somos mais fortes.\n", TimeUnit.MILLISECONDS, temp_dialog);
             Texto(name + "\nOk!\n", TimeUnit.MILLISECONDS, temp_dialog);
             break;
@@ -313,7 +351,7 @@ Texto("desencadeando uma grande aventura onde a batalha entre a ordem e o caos �
         Texto("Multiplus : Temos que agir rápido! Discrepância não vai nos dar trégua.\n", TimeUnit.MILLISECONDS, temp_dialog);
         Texto("Subtract : Fiquem alertas! Suas ilusões podem nos confundir.\n", TimeUnit.MILLISECONDS, temp_dialog);
         Texto("Divíduos : Não podemos deixar que suas distorções nos abalem. Juntos, podemos vencê-lo!\n\n", TimeUnit.MILLISECONDS, temp_dialog);
-        Texto("(Discrepância surge diante dos guardiões, envolto em suas ilusões matemáticas)\n\n2"
+        Texto("(Discrepância surge diante dos guardiões, envolto em suas ilusões matemáticas)\n\n"  
                 + "", TimeUnit.MILLISECONDS, temp_dialog);
         Texto("Discrepância : Ah, os valentes Guardiões Elementais! Que surpresa encontrá-los aqui.\nEstão prontos para serem derrotados pelas minhas habilidades?\n\n", TimeUnit.MILLISECONDS, temp_dialog);
         Texto("Addictus : Não subestime o poder da matemática, Discrepância! Estamos aqui para restaurar o equilíbrio em Algebraria.\n", TimeUnit.MILLISECONDS, temp_dialog);
@@ -359,14 +397,14 @@ Texto("desencadeando uma grande aventura onde a batalha entre a ordem e o caos �
         Texto("Multiplus : Vamos "+name+" Nos ajude a dar dano nele. Precisamos resolver essa conta de Equação 1ºGRAU!\n", TimeUnit.MILLISECONDS, temp_dialog);
         Texto(name+ " : Pode deixar comigo Multiplus!\n\n", TimeUnit.MILLISECONDS, temp_dialog);
         
-        Texto("Caro Jogador, você terá um limite de 3 tentativas \nSe você utilzar todas as tentativas o jogo retornará será finalizado.\n", TimeUnit.MILLISECONDS, temp_dialog);
-        Texto("[1] Continuar [2] Desistir\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("Caro Jogador, você terá um limite de 3 tentativas \nSe você utilzar todas as tentativas o jogo será finalizado.\n", TimeUnit.MILLISECONDS, temp_dialog); 
+        Texto("[1] Continuar \n[2] Desistir\n", TimeUnit.MILLISECONDS, temp_dialog);
         aviso = input.nextInt();
         
         do{
         switch(aviso){
             case 1:
-                Texto("O game continuará\n", TimeUnit.MILLISECONDS, temp_dialog);
+                Texto("O game continuará\n\n", TimeUnit.MILLISECONDS, temp_dialog);
                 break;
             case 2: 
                 sair(name); 
@@ -377,16 +415,16 @@ Texto("desencadeando uma grande aventura onde a batalha entre a ordem e o caos �
         }
         }while(aviso !=1 && aviso !=2);
         
-        contas();
-        Texto("Discrepância : Ah Seus maldito! irei acabar com todos vocês! \n\n", TimeUnit.MILLISECONDS, temp_dialog);
+        contas(name);
+        Texto("Discrepância : Ah Seus malditos! irei acabar com todos vocês! \n\n", TimeUnit.MILLISECONDS, temp_dialog); 
         Texto("Subtract : O "+name+" Conseguiu!\n", TimeUnit.MILLISECONDS, temp_dialog);
         Texto("\n\nAddictus : Ele está enfraquecendo! Não podemos recuar agora!\n", TimeUnit.MILLISECONDS, temp_dialog);
         Texto("Multiplus : Vamos concentrar nossos esforços! Juntos, podemos superá-lo!\n", TimeUnit.MILLISECONDS, temp_dialog);
         Texto("Subtract : Sintam a força da subtração! Cada equação resolvida é um golpe em direção à vitória!\n", TimeUnit.MILLISECONDS, temp_dialog);
         Texto("Divíduos : Não vamos parar até que o equilíbrio seja restaurado em Algebraria!\n", TimeUnit.MILLISECONDS, temp_dialog);
         Texto(name + " : Vamos resolver mais essa equação!\n\n", TimeUnit.MILLISECONDS, temp_dialog);
-        contas();
-        Texto("Discrepância : (coff, coff, coff) Não é possível, fui derrotado por esses pivetes.\nSeus bastardos, meu mestre irá acabar com vocês e essa Algebraria irá cair em ruínas.\n\n", TimeUnit.MILLISECONDS, temp_dialog);
+        contas(name);
+        Texto("\n\nDiscrepância : (coff, coff, coff) Não é possível, fui derrotado por esses pivetes.\nSeus bastardos, meu mestre irá acabar com vocês e essa Algebraria irá cair em ruínas.\n\n", TimeUnit.MILLISECONDS, temp_dialog);
        
         Texto("Addictus : Conseguimos! Algebraria está a salvo mais uma vez.\n", TimeUnit.MILLISECONDS, temp_dialog);
         Texto("Multiplus : A matemática sempre prevalece sobre o caos!\n", TimeUnit.MILLISECONDS, temp_dialog);
@@ -401,7 +439,7 @@ Texto("desencadeando uma grande aventura onde a batalha entre a ordem e o caos �
                 break;
             case 2:
                 Texto(name + " : Não se animem pessoal, ainda temos muito pela frente.\n\n", TimeUnit.MILLISECONDS, temp_dialog);
-                Texto("Multiplus : O " +name+ " tem razão, temo que manter o foco.\n", TimeUnit.MILLISECONDS, temp_dialog);
+                Texto("Multiplus : O " +name+ " tem razão, temos que manter o foco.\n", TimeUnit.MILLISECONDS, temp_dialog);
                 Texto("Divíduos : Concordo!\n", TimeUnit.MILLISECONDS, temp_dialog);
                 break;
             default:
@@ -418,7 +456,7 @@ Texto("desencadeando uma grande aventura onde a batalha entre a ordem e o caos �
         Texto("Subtract : EU NÃO SEI!\n", TimeUnit.MILLISECONDS, temp_dialog);
         Texto("Multiplus : Algo está errado, nunca senti uma tremor tão forte em Algebraria!\n", TimeUnit.MILLISECONDS, temp_dialog);
         Texto("Divíduos : Concordo, isso é muito estranho. Devemos descobrir o que está acontecendo imediatamente!\n", TimeUnit.MILLISECONDS, temp_dialog);
-        Texto("[1] Ir ajudar os moradores \n[2]procurar por pistas", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto("[1] Ir ajudar os moradores \n[2]procurar por pistas\n", TimeUnit.MILLISECONDS, temp_dialog);
         dialog_11 = input.nextInt();
         
         switch (dialog_11) {
@@ -429,10 +467,10 @@ Texto("desencadeando uma grande aventura onde a batalha entre a ordem e o caos �
         
         break;
     case 2:
-        Texto(name+ ": Vamos averiguar pessoal. Alguma coisa me diz que esse tremor tem a ver com ERROR.\n\n", TimeUnit.MILLISECONDS, temp_dialog);
+        Texto(name+ ": Vamos averiguar pessoal. Alguma coisa me diz que esse tremor tem a ver com ERROR.\n\n", TimeUnit.MILLISECONDS, temp_dialog); 
     Texto("Narrador: O grupo decide procurar por pistas sobre a origem do estrondo. Enquanto investigam os arredores, encontram \nUm rastro de destruição que parece ter sido causado por alguma entidade poderosa.\n", TimeUnit.MILLISECONDS, temp_dialog);
     Texto("Fragmentos de pedra e destroços estão espalhados pelo chão, e marcas estranhas adornam as paredes das construções próximas.\n", TimeUnit.MILLISECONDS, temp_dialog);
-    Texto("Há indícios de que algo muito maior do que um simples terremoto aconteceu aqui. O grupo decide seguir as pistas e descobrir o que está por trás desse evento.\n", TimeUnit.MILLISECONDS, temp_dialog);
+    Texto("Há indícios de que algo muito maior do que um simples terremoto aconteceu aqui. O grupo decide seguir as pistas e descobrir o que está por trás desse evento.\n\n", TimeUnit.MILLISECONDS, temp_dialog);
         
         break;
     default:
@@ -455,7 +493,7 @@ Texto("Foi informado que é o \"EQUATROM!\", este é o braço direito do DRAGÃO
         do{
         switch(dialog_10){ 
             case 1:
-                 Texto(name + " : Vamos Nessa Pessoal, precisamos derrotar Equatrom para chegar até Error.\n\n", TimeUnit.MILLISECONDS, temp_dialog); 
+                 Texto(name + " : Vamos Nessa Pessoal, precisamos derrotar Equatrom para chegar até Error.\n\n", TimeUnit.MILLISECONDS, temp_dialog);  
                 break;
             default:
             System.out.println("\nCaro jogador, digite uma opção válida!\n");
@@ -472,17 +510,17 @@ Texto("Foi informado que é o \"EQUATROM!\", este é o braço direito do DRAGÃO
 
     static void creditos(String name) throws InterruptedException {
         Scanner input = new Scanner(System.in);
-        int menu;
+        int retornar;
         Texto("Centro Universitário Senac - Santo Amaro.\n", TimeUnit.MILLISECONDS, temp_instrucoes);
-        Texto("Projeto Integrador - Prof. Dr. Eduardo Takeo Ueda.\n", TimeUnit.MILLISECONDS, temp_instrucoes);
+        Texto("Projeto Integrador - Prof. Dr. Eduardo Takeo Ueda.\n", TimeUnit.MILLISECONDS, temp_instrucoes); 
         Texto("Projeto Semestral - 2024.\n\n", TimeUnit.MILLISECONDS, temp_instrucoes);
         Texto(".:::::::: Desenvolvedores ::::::::.", TimeUnit.MILLISECONDS, temp_instrucoes);
         Texto("\n1 João Paulo Gomes Silva \n2 Alex Araújo Reis \n3 Gabriel Oliveira Quintino \n4 Rafael Oliveira Quintino \n5 Rodrigo Pereira Gama\n", TimeUnit.MILLISECONDS, temp_instrucoes);
         System.out.println("");
         Texto("[1] - Retornar ao Menu\n", TimeUnit.MILLISECONDS, temp_instrucoes);
-        menu = input.nextInt();
+        retornar = input.nextInt();
         do{
-        switch (menu) { 
+        switch (retornar) { 
             case 1:
                 int escolha = menu_Escolha(name);
                 menu(escolha, name);
@@ -491,13 +529,13 @@ Texto("Foi informado que é o \"EQUATROM!\", este é o braço direito do DRAGÃO
                 System.out.println("Opção inválida.");
                 break;
         }
-        }while(menu !=1);
+        }while(retornar ==1);
 
     }
     
     static void intrucoes(String name) throws InterruptedException {
         Scanner input = new Scanner(System.in);
-        int menu1;
+        int retornar_1;
      Texto(".:::::::: INSTRUÇÕES DO JOGO ::::::::.", TimeUnit.MILLISECONDS, temp_instrucoes);
      Texto("\n\nBem-vindo ao Reino de Algebraria!\n", TimeUnit.MILLISECONDS, temp_instrucoes);
      Texto("Você está prestes a embarcar em uma jornada épica como um guardião do reino. Suas decisões e\n", TimeUnit.MILLISECONDS, temp_instrucoes);
@@ -509,7 +547,7 @@ Texto("Foi informado que é o \"EQUATROM!\", este é o braço direito do DRAGÃO
      Texto("matemáticas para derrotar os inimigos.\n\n", TimeUnit.MILLISECONDS, temp_instrucoes);
      
      Texto(".:::::::: INICIAR O JOGO. ::::::::. \n\n", TimeUnit.MILLISECONDS, temp_instrucoes);
-     Texto("O jogo começa com uma introdução onde você é saudado por Addictus, um dos guardiões do reino.\n\n", TimeUnit.MILLISECONDS, temp_dialog);
+     Texto("O jogo começa com uma introdução onde você é saudado por Addictus, um dos guardiões do reino.\n\n", TimeUnit.MILLISECONDS, temp_instrucoes);
      
         // Tomar Decisões
         Texto(".:::::::: TOMAR DECISÕES ::::::::.\n\n", TimeUnit.MILLISECONDS, temp_instrucoes);
@@ -534,12 +572,14 @@ Texto("Foi informado que é o \"EQUATROM!\", este é o braço direito do DRAGÃO
         Texto(".:::::::: REPETIR AS AÇÕES ::::::::. \n\n", TimeUnit.MILLISECONDS, temp_instrucoes);
         Texto("Algumas escolhas podem exigir que você tente novamente até fornecer uma resposta válida.\n", TimeUnit.MILLISECONDS, temp_instrucoes);
         Texto("Siga as instruções de repetição fornecidas pelo jogo para continuar.\n\n", TimeUnit.MILLISECONDS, temp_instrucoes);
+        
+        do{
         Texto("[1] - Retornar ao Menu\n", TimeUnit.MILLISECONDS, temp_instrucoes);
         
         
-        menu1 = input.nextInt();
-        do{
-        switch (menu1) {
+        retornar_1 = input.nextInt();
+        
+        switch (retornar_1) {
             case 1:
                 int escolha = menu_Escolha(name);
                 menu(escolha, name);
@@ -548,7 +588,7 @@ Texto("Foi informado que é o \"EQUATROM!\", este é o braço direito do DRAGÃO
                 System.out.println("Opção inválida.");
                 break;
         }
-       }while(menu1 !=1);
+       }while(retornar_1 ==1);
      }
 
     static void sair(String name) {
@@ -563,15 +603,9 @@ Texto("Foi informado que é o \"EQUATROM!\", este é o braço direito do DRAGÃO
         int opcao2;
     }
 
-    public static void Texto(String texto, TimeUnit unit, long tempo_texto) throws InterruptedException {
-        for (char caractere : texto.toCharArray()) {
-            System.out.print(caractere);
-            unit.sleep(tempo_texto);
-        }
+    
 
-    }
-
-    public static int contas() {
+    public static int contas(String name) { 
         Random rand = new Random();
         int aleat = rand.nextInt(3);
         Scanner ler = new Scanner(System.in);
